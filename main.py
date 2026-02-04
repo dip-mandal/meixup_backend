@@ -79,4 +79,34 @@ async def health_check():
         ],
         "firebase_status": "initialized"
     }
-    
+
+from datetime import datetime
+import platform
+import sys
+import time
+
+APP_START_TIME = time.time()
+
+@app.get("/health", tags=["Health"])
+async def health():
+    return {
+        "status": "healthy",
+
+        "service": {
+            "name": "meiXuP Master API",
+            "version": app.version,
+            "environment": settings.ENVIRONMENT if hasattr(settings, "ENVIRONMENT") else "production"
+        },
+
+        "runtime": {
+            "python_version": sys.version.split(" ")[0],
+            "platform": platform.system(),
+            "uptime_seconds": int(time.time() - APP_START_TIME)
+        },
+
+        "dependencies": {
+            "firebase_initialized": firebase_admin._apps != {}
+        },
+
+        "timestamp": datetime.utcnow().isoformat() + "Z"
+    }
