@@ -9,3 +9,4 @@ node_modules/
 .vscode/
 ca.pem
 firebase-adminsdk.json
+replacements.txt
