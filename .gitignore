@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.env.local
+.env.production
+node_modules/
+.idea/
+.vscode/
+ca.pem
+firebase-adminsdk.json

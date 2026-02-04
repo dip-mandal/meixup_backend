@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        }
+        .alert-card { 
+            max-width: 540px; 
+            margin: 60px auto; 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
+        }
+        .security-header { 
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); 
+            padding: 36px; 
+            text-align: center; 
+            color: white; 
+        }
+        .security-icon { 
+            font-size: 56px; 
+            margin-bottom: 20px; 
+        }
+        .security-title { 
+            font-size: 26px; 
+            font-weight: 700; 
+            margin: 0 0 12px; 
+        }
+        .security-subtitle { 
+            opacity: 0.9; 
+            font-weight: 400; 
+            margin: 0; 
+        }
+        .content-area { 
+            padding: 44px; 
+        }
+        .intro-text { 
+            color: #475569; 
+            line-height: 1.7; 
+            margin-bottom: 36px; 
+        }
+        .session-details { 
+            background: #fef2f2; 
+            border: 1px solid #fecaca; 
+            border-radius: 16px; 
+            padding: 28px; 
+            margin: 36px 0; 
+        }
+        .detail-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 14px 0; 
+            border-bottom: 1px solid #fee2e2; 
+        }
+        .detail-item:last-child { 
+            border-bottom: none; 
+        }
+        .detail-label { 
+            font-weight: 500; 
+            color: #57534e; 
+        }
+        .detail-value { 
+            font-weight: 600; 
+            color: #1e293b; 
+        }
+        .warning-banner { 
+            background: #fef2f2; 
+            border-left: 4px solid #dc2626; 
+            padding: 20px; 
+            margin: 32px 0; 
+            border-radius: 0 8px 8px 0; 
+        }
+        .warning-title { 
+            color: #b91c1c; 
+            font-weight: 700; 
+            margin: 0 0 8px; 
+        }
+        .action-section { 
+            text-align: center; 
+            margin-top: 44px; 
+            padding-top: 32px; 
+            border-top: 1px solid #e2e8f0; 
+        }
+        .action-button { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); 
+            color: white; 
+            text-decoration: none; 
+            padding: 16px 40px; 
+            border-radius: 10px; 
+            font-weight: 600; 
+            margin: 0 8px 16px; 
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2); 
+        }
+        .secondary-action { 
+            display: block; 
+            color: #64748b; 
+            font-size: 14px; 
+            text-decoration: none; 
+            margin-top: 16px; 
+        }
+        .footer-info { 
+            text-align: center; 
+            padding: 24px; 
+            background: #f8fafc; 
+            color: #64748b; 
+            font-size: 13px; 
+            border-top: 1px solid #e2e8f0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-card">
+        <div class="security-header">
+            <div class="security-icon">🛡️</div>
+            <h1 class="security-title">New Login Detected</h1>
+            <p class="security-subtitle">Security Alert for Your meiXuP Account</p>
+        </div>
+        
+        <div class="content-area">
+            <p class="intro-text">We detected a new successful login to your account. Please review the session details below to verify it was you.</p>
+            
+            <div class="session-details">
+                <div class="detail-item">
+                    <span class="detail-label">📍 Location</span>
+                    <span class="detail-value">{{ location }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">🕒 Time</span>
+                    <span class="detail-value">{{ time }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">📱 Device</span>
+                    <span class="detail-value">{{ device }}</span>
+                </div>
+            </div>
+            
+            <div class="warning-banner">
+                <h3 class="warning-title">⚠️ Don't Recognize This Activity?</h3>
+                <p style="margin: 0; color: #7f1d1d;">If this wasn't you, your account may be compromised. Take immediate action to secure your account.</p>
+            </div>
+            
+            <div class="action-section">
+                <a href="https://meixup.com/security/actions" class="action-button">Secure My Account</a>
+                <a href="https://meixup.com/sessions" class="secondary-action">View All Active Sessions →</a>
+            </div>
+        </div>
+        
+        <div class="footer-info">
+            For security reasons, this email was sent to the address associated with your meiXuP account.
+        </div>
+    </div>
+</body>
+</html>
