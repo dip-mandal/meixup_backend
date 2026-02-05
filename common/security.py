@@ -3,17 +3,22 @@ from typing import Optional, Any, Dict
 from jose import jwt, JWTError
 from passlib.context import CryptContext
 from .config import settings
+import bcrypt
 
 # Setup password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    """Hashes a plain text password."""
-    return pwd_context.hash(password)
+    # Hash requires bytes, so we encode the string
+    pwd_bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password=pwd_bytes, salt=salt)
+    return hashed_password.decode('utf-8')
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verifies a plain text password against a hashed version."""
-    return pwd_context.verify(plain_password, hashed_password)
+    password_byte_enc = plain_password.encode('utf-8')
+    hashed_password_byte_enc = hashed_password.encode('utf-8')
+    return bcrypt.checkpw(password_byte_enc, hashed_password_byte_enc)
 
 def create_access_token(subject: Any, expires_delta: Optional[timedelta] = None) -> str:
     """Creates a JWT access token for a user."""
