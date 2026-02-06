@@ -11,3 +11,4 @@ node_modules/
 ca.pem
 firebase-adminsdk.json
 replacements.txt
+frontend/
