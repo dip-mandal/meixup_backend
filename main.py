@@ -51,7 +51,7 @@ app = FastAPI(
 # Replace "*" with specific domains (e.g., ["http://localhost:3000"]) in production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
+    allow_origins=["http://localhost:3000","https://dip-mandal.github.io/meixup_frontend"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
